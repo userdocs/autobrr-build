@@ -1,0 +1,19 @@
+FROM ubuntu:latest
+
+SHELL ["/bin/bash", "-c"]
+
+ARG DEBIAN_FRONTEND=noninteractive
+ENV GOPATH=/usr/local/go
+
+RUN apt-get update -y && apt-get install -y curl git gnupg2 build-essential && \
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+echo 'deb [trusted=yes] https://repo.goreleaser.com/apt/ /' | tee /etc/apt/sources.list.d/goreleaser.list && \
+curl -sL https://deb.nodesource.com/setup_lts.x | bash && apt-get install -y nodejs && \
+apt-get update && apt-get install -y curl git yarn golang-go goreleaser && \
+adduser --disabled-password --gecos '' username && \
+curl -sL https://raw.githubusercontent.com/userdocs/autobrr-build/main/build.sh -o /usr/local/bin/build.sh && \
+chmod 755 /usr/local/bin/build.sh && \
+mkdir -p /usr/local/go && chown -R username:username /usr/local/go
+
+WORKDIR /home/username
