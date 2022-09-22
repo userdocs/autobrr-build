@@ -3,7 +3,7 @@ FROM alpine:edge
 SHELL ["/bin/ash", "-c"]
 
 ENV GOPATH=/usr/local/go
-RUN apk add --no-cache bash build-base curl git nodejs yarn go && \
+RUN apk add --no-cache bash build-base curl git nodejs yarn go upx && \
 curl -sL https://github.com/goreleaser/goreleaser/releases/latest/download/goreleaser_Linux_x86_64.tar.gz | tar -xz -C /usr/local/bin/ goreleaser && \
 adduser --disabled-password --gecos '' username && \
 curl -sL https://raw.githubusercontent.com/userdocs/autobrr-build/main/build.sh -o /usr/local/bin/build.sh && \
