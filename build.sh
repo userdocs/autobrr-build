@@ -13,7 +13,7 @@ while (("${#}")); do
 			;;
 		-g)
 			[[ -z "${2}" ]] && exit 1
-			github_url="${2}"
+			github_url="https://github.com/${2}.git"
 			shift 2
 			;;&
 		-d)
