@@ -13,6 +13,6 @@ Some very basic options
 
 `-c` clear the repo and do nothing else.
 
-`-g` specify a github repo (fork) to clone
+`-g` specify a github repo (fork) to clone using shorthand `-g userdocs/autobrr`
 
 `-m` build using `make` to quickly get a Linux binary for your arch in `autobrr/bin`
